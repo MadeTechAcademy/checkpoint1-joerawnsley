@@ -3,10 +3,13 @@ from themes import print_duties_to_terminal
 from themes import create_html_document
 
 import os
+import re
 
 
 
+duty_2 = "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members."
 duty_3 = "Duty 3 Engage in productive pair/mob programming to underpin the practice of peer review."
+duty_7 = "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members."
 duty_8 = "Duty 8 Evolve and define architecture, utilising the knowledge and experience of the team to design in an optimal user experience, scalability, security, high availability and optimal performance."
 duty_13 = "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
         
@@ -40,7 +43,7 @@ class TestCreateHTMLDocument():
     
     def test_html_doc_is_created(self):
         
-        create_html_document(self.html_list_name)
+        create_html_document(list_of_duties)
         assert os.path.exists(self.html_list_name)
         
         self.remove_file()
@@ -48,13 +51,31 @@ class TestCreateHTMLDocument():
     
     def test_html_doc_includes_title(self):
         
-        create_html_document(self.html_list_name)
+        create_html_document(list_of_duties)
         title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
-        html_file = open(self.html_list_name).read()
-        assert title_section in html_file
+        html_file = open(self.html_list_name)
+        assert title_section in html_file.read()
         html_file.close()
         
         self.remove_file()
+    
+    def test_html_doc_includes_duties_as_list_element(self):
+        def list_element(duty):
+            return f"<li>{duty}</li>" 
+        
+        create_html_document(list_of_duties) 
+        html_file = open(self.html_list_name)
+        file_contents = html_file.read()
+        
+        assert list_element(duty_2) in file_contents
+        assert list_element(duty_3) in file_contents
+        
+        html_file.close()
+
+    def test_ul_tags_in_file_contents(self):
+        pass
+    
+
         
     def test_remove_file_if_still_exists(self):
         self.remove_file()
