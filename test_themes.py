@@ -39,19 +39,27 @@ class TestCreateHTMLDocument():
             assert not os.path.exists(self.html_list_name)
     
     def test_html_doc_is_created(self):
+        
         create_html_document(self.html_list_name)
         assert os.path.exists(self.html_list_name)
+        
         self.remove_file()
-        # os.remove(self.html_list_name)
-        # assert not os.path.exists(self.html_list_name)
+
     
     def test_html_doc_includes_title(self):
+        
         create_html_document(self.html_list_name)
         title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
         html_file = open(self.html_list_name).read()
         assert title_section in html_file
         html_file.close()
+        
         self.remove_file()
+        
+    def test_remove_file_if_still_exists(self):
+        self.remove_file()
+        
+    
 
         
     
