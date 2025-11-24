@@ -1,5 +1,8 @@
 from themes import list_of_duties
 from themes import print_duties_to_terminal
+from themes import create_html_document
+
+import os.path
 
 
 
@@ -25,3 +28,9 @@ class TestPrintFunction():
         assert duty_3 in captured.out
         assert duty_8 in captured.out
         assert duty_13 in captured.out
+
+
+class TestCreateHTMLDocument():
+    def test_html_doc_is_created(self):
+        create_html_document(list_of_duties)
+        assert os.path.exists("list_of_duties.html")

@@ -19,6 +19,9 @@ def print_duties_to_terminal():
     for duty in list_of_duties:
         print(duty + "\n")
 
+def create_html_document(list_of_duties):
+    pass
+
 if __name__=="__main__":
     user_choice = input("""
     Welcome to apprentice themes!\n
