@@ -1,5 +1,5 @@
-from themes import x2
+from themes import list_of_duties
 
 def testIt():
-    assert len(x2) == 13
+    assert len(list_of_duties) == 13
     
