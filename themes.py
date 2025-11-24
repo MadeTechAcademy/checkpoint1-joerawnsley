@@ -20,7 +20,7 @@ def print_duties_to_terminal():
         print(duty + "\n")
 
 def create_html_document(list_of_duties):
-    pass
+    html_list_of_duties = open("list_of_duties.html", "x")
 
 if __name__=="__main__":
     user_choice = input("""

@@ -2,7 +2,7 @@ from themes import list_of_duties
 from themes import print_duties_to_terminal
 from themes import create_html_document
 
-import os.path
+import os
 
 
 
@@ -32,5 +32,11 @@ class TestPrintFunction():
 
 class TestCreateHTMLDocument():
     def test_html_doc_is_created(self):
-        create_html_document(list_of_duties)
-        assert os.path.exists("list_of_duties.html")
+        html_list = "list_of_duties.html"
+        create_html_document(html_list)
+        
+        assert os.path.exists(html_list)
+        
+        os.remove(html_list)
+        assert not os.path.exists(html_list)
+        
