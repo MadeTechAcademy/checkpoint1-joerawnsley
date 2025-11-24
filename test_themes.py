@@ -31,12 +31,28 @@ class TestPrintFunction():
 
 
 class TestCreateHTMLDocument():
+    html_list_name = "list_of_duties.html"
+    
+    def remove_file(self):
+        if os.path.exists(self.html_list_name):
+            os.remove(self.html_list_name)
+            assert not os.path.exists(self.html_list_name)
+    
     def test_html_doc_is_created(self):
-        html_list = "list_of_duties.html"
-        create_html_document(html_list)
+        create_html_document(self.html_list_name)
+        assert os.path.exists(self.html_list_name)
+        self.remove_file()
+        # os.remove(self.html_list_name)
+        # assert not os.path.exists(self.html_list_name)
+    
+    def test_html_doc_includes_title(self):
+        create_html_document(self.html_list_name)
+        title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
+        html_file = open(self.html_list_name).read()
+        assert title_section in html_file
+        html_file.close()
+        self.remove_file()
+
         
-        assert os.path.exists(html_list)
-        
-        os.remove(html_list)
-        assert not os.path.exists(html_list)
+    
         
