@@ -15,9 +15,12 @@ list_of_duties = [
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience.",
 ]
 
+from duties import *
+
+
 def print_duties_to_terminal():
-    for duty in list_of_duties:
-        print(duty + "\n")
+    for duty in all_duties:
+        print(duty.toText())
 
 def create_html_document(list_of_duties):
     html_list_of_duties = open("list_of_duties.html", "x")

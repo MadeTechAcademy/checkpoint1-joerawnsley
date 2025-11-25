@@ -4,8 +4,8 @@ class Duty:
         self.duty_text = duty_text
     
     def toText(self):
-        return f"Duty {self.duty_number}: {self.duty_text}."
+        return f"Duty {self.duty_number} {self.duty_text}.\n"
 
     def toListElement(self):
-        return f"<li>Duty {self.duty_number}: {self.duty_text}.</li>\n"
+        return f"<li>Duty {self.duty_number} {self.duty_text}.</li>\n"
     
