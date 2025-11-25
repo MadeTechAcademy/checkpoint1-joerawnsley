@@ -4,23 +4,14 @@ from duties import *
 
 import os
 
-
-
-duty_2 = "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members."
-duty_3 = "Duty 3 Engage in productive pair/mob programming to underpin the practice of peer review."
-duty_7 = "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members."
-duty_8 = "Duty 8 Evolve and define architecture, utilising the knowledge and experience of the team to design in an optimal user experience, scalability, security, high availability and optimal performance."
-duty_13 = "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
-
-
 class TestPrintFunction():
     def test_check_capsys(self, capsys):
         print_duties_to_terminal()
         captured = capsys.readouterr()
 
-        assert duty_3 in captured.out
-        assert duty_8 in captured.out
-        assert duty_13 in captured.out
+        assert duty_3.plainText() in captured.out
+        assert duty_8.plainText() in captured.out
+        assert duty_13.plainText() in captured.out
 
 
 class TestCreateHTMLDocument():
@@ -45,16 +36,13 @@ class TestCreateHTMLDocument():
         self.remove_file()
     
     def test_html_doc_includes_duties_as_list_element(self):
-        
-        def list_element(duty):
-            return f"<li>{duty}</li>" 
-        
+               
         create_html_document(all_duties) 
         with open(self.html_list_name) as html_file:
             file_contents = html_file.read()
-            assert list_element(duty_2) in file_contents
-            assert list_element(duty_3) in file_contents
-            assert list_element(duty_13) in file_contents
+            assert duty_2.htmlListElement() in file_contents
+            assert duty_3.htmlListElement() in file_contents
+            assert duty_3.htmlListElement() in file_contents
         self.remove_file()
 
     def test_ul_tags_in_file_contents(self):

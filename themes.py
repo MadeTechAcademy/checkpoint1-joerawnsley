@@ -4,14 +4,14 @@ from duties import *
 
 def print_duties_to_terminal():
     for duty in all_duties:
-        print(duty.toText())
+        print(duty.plainText())
     
 def create_html_document(duties):
     with open("list_of_duties.html", "x") as html_file:
         html_file.write("<h1>Devops Engineer: Occupation Duties</h1>")
         html_file.write("<ul>")
         for duty in duties:
-            html_file.write(duty.toListElement())
+            html_file.write(duty.htmlListElement())
         html_file.write("</ul>")
 
     
