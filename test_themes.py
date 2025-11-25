@@ -6,7 +6,7 @@ import os
 
 class TestPrintFunction():
     def test_check_capsys(self, capsys):
-        print_duties_to_terminal()
+        print_duties_to_terminal(all_duties)
         captured = capsys.readouterr()
 
         assert duty_3.plainText() in captured.out

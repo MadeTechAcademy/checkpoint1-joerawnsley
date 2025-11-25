@@ -1,9 +1,10 @@
 from duties import *
+import webbrowser
+import os
 
 
-
-def print_duties_to_terminal():
-    for duty in all_duties:
+def print_duties_to_terminal(duties):
+    for duty in duties:
         print(duty.plainText())
     
 def create_html_document(duties):
@@ -17,12 +18,17 @@ def create_html_document(duties):
     
 
 if __name__=="__main__":
-    # user_choice = input("""
-    # Welcome to apprentice themes!\n
-    # Press (1) to list all the duties\n
-    # Enter your choice:
-    # """)
-    # # if user_choice == '1
-    # #     print_duties_to_terminal()
-        
-    create_html_document(all_duties)
+    
+    user_choice = input("""
+    Welcome to apprentice themes!\n
+    Press (1) to list all the duties, or press (2) to see them in the browser.\n
+    Enter your choice:
+    """)
+    if user_choice == '1':
+        print("\n")
+        print_duties_to_terminal(all_duties)
+    
+    if user_choice == '2':
+        create_html_document(all_duties)
+        file_path = "file://" + os.path.realpath("list_of_duties.html")
+        webbrowser.open(file_path)

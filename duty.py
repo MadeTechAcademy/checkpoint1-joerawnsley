@@ -4,8 +4,8 @@ class Duty:
         self.duty_text = duty_text
     
     def plainText(self):
-        return f"Duty {self.duty_number} {self.duty_text}.\n"
+        return f"Duty {self.duty_number}: {self.duty_text}.\n"
 
     def htmlListElement(self):
-        return f"<li>Duty {self.duty_number} {self.duty_text}.</li>\n"
+        return f"<li><b>Duty {self.duty_number}:</b> {self.duty_text}.</li>\n"
     
