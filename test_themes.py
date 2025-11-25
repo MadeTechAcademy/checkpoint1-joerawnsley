@@ -5,13 +5,25 @@ from duties_and_names import *
 import os
 
 class TestPrintFunction:
-    def test_check_capsys(self, capsys):
+    def test_check_print_output(self, capsys):
         print_duties_to_terminal(all_duties)
         captured = capsys.readouterr()
 
         assert duty_3.plainText() in captured.out
         assert duty_8.plainText() in captured.out
         assert duty_13.plainText() in captured.out
+    
+    def test_check_print_output_specified_duties_only(self, capsys):
+        print_duties_to_terminal([duty_6, duty_9, duty_11])
+        captured = capsys.readouterr()
+        
+        assert duty_6.plainText() in captured.out
+        assert duty_9.plainText() in captured.out
+        assert duty_11.plainText() in captured.out   
+        assert duty_3.plainText() not in captured.out
+        assert duty_8.plainText() not in captured.out
+        assert duty_13.plainText() not in captured.out     
+        
 
 title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
 
@@ -89,6 +101,25 @@ class TestCreateHTMLDocumentSpecifiedDuties:
             assert duty_4.htmlListElement() in file_contents
             assert duty_1.htmlListElement() not in file_contents
             assert duty_5.htmlListElement() not in file_contents
+        remove_file(html_file_name)
+    
+    def test_create_html_doc_with_multiple_duties(self):
+        create_html_document(html_file_name, [duty_1, duty_3, duty_4, duty_12])
+        assert os.path.exists(html_file_name)
+        with open(html_file_name) as html_file:
+            file_contents = html_file.read()
+            assert title_section in file_contents
+            assert file_contents.count("<ul>") == 1
+            assert file_contents.count("</ul>") == 1
+            assert file_contents.count("<li>") == 4
+            assert file_contents.count("</li>") == 4
+            assert duty_1.htmlListElement() in file_contents
+            assert duty_3.htmlListElement() in file_contents
+            assert duty_4.htmlListElement() in file_contents
+            assert duty_12.htmlListElement() in file_contents
+            assert duty_2.htmlListElement() not in file_contents
+            assert duty_8.htmlListElement() not in file_contents
+            assert duty_13.htmlListElement() not in file_contents    
         remove_file(html_file_name)
     
     def test_remove_file_if_still_exists(self):
