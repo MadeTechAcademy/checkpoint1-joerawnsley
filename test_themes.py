@@ -13,6 +13,8 @@ class TestPrintFunction:
         assert duty_8.plainText() in captured.out
         assert duty_13.plainText() in captured.out
 
+html_list_name = "list_of_duties.html"
+title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
 
 def remove_file(filename):
         if os.path.exists(filename):
@@ -20,64 +22,79 @@ def remove_file(filename):
             
 
 class TestCreateHTMLDocumentAllDuties:
-    html_list_name = "list_of_duties.html"
-    
-    
-    
+     
     def test_html_doc_is_created(self):
         create_html_document(all_duties)
-        assert os.path.exists(self.html_list_name)
-        remove_file(self.html_list_name)
+        assert os.path.exists(html_list_name)
+        remove_file(html_list_name)
 
     
     def test_html_doc_includes_title(self):
         create_html_document(all_duties)
-        title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
-        with open(self.html_list_name) as html_file:
+        with open(html_list_name) as html_file:
             assert title_section in html_file.read()
-        remove_file(self.html_list_name)
+        remove_file(html_list_name)
     
     def test_html_doc_includes_duties_as_list_element(self):
                
         create_html_document(all_duties) 
-        with open(self.html_list_name) as html_file:
+        with open(html_list_name) as html_file:
             file_contents = html_file.read()
             assert duty_2.htmlListElement() in file_contents
             assert duty_3.htmlListElement() in file_contents
             assert duty_3.htmlListElement() in file_contents
-        remove_file(self.html_list_name)
+        remove_file(html_list_name)
 
     def test_ul_tags_in_file_contents(self):
         create_html_document(all_duties)
-        with open(self.html_list_name) as html_file:
+        with open(html_list_name) as html_file:
             file_contents = html_file.read()
             assert "<ul>" in file_contents
             assert "</ul>" in file_contents
-        remove_file(self.html_list_name)
+        remove_file(html_list_name)
     
     def test_html_file_contains_two_ul_tags(self):
         create_html_document(all_duties)
-        with open(self.html_list_name) as html_file:
+        with open(html_list_name) as html_file:
             file_contents = html_file.read()
             assert file_contents.count("<ul>") == 1
             assert file_contents.count("</ul>") == 1
-        remove_file(self.html_list_name)
+        remove_file(html_list_name)
     
     def _test_html_file_contains_26_li_tags(self):
         create_html_document(all_duties)
-        with open(self.html_list_name) as html_file:
+        with open(html_list_name) as html_file:
             file_contents = html_file.read()
             assert file_contents.count("<li>") == 13
             assert file_contents.count("</li>") == 13
-        remove_file(self.html_list_name)
+        remove_file(html_list_name)
     
 
     def test_remove_file_if_still_exists(self):
-        remove_file(self.html_list_name)
-        assert not os.path.exists(self.html_list_name)
+        remove_file(html_list_name)
+        assert not os.path.exists(html_list_name)
         
-    
 
-        
+class TestCreateHTMLDocumentSpecifiedDuties:
     
+    def test_create_html_doc_with_single_duty(self):
+        create_html_document([4])
+        assert os.path.exists(html_list_name)
+        with open(html_list_name) as html_file:
+            file_contents = html_file.read()
+            assert title_section in file_contents
+            assert file_contents.count("<ul>") == 1
+            assert file_contents.count("</ul>") == 1
+            assert file_contents.count("<li>") == 1
+            assert file_contents.count("</li>") == 1
+            assert duty_4.htmlListElement() in file_contents
+            assert duty_1.htmlListElement() not in file_contents
+            assert duty_5.htmlListElement() not in file_contents
+        remove_file(html_list_name)
+    
+    def test_remove_file_if_still_exists(self):
+        remove_file(html_list_name)
+        assert not os.path.exists(html_list_name)
+        
+        
         
