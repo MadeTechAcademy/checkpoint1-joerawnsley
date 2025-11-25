@@ -4,7 +4,7 @@ from duties import *
 
 import os
 
-class TestPrintFunction():
+class TestPrintFunction:
     def test_check_capsys(self, capsys):
         print_duties_to_terminal(all_duties)
         captured = capsys.readouterr()
@@ -14,18 +14,20 @@ class TestPrintFunction():
         assert duty_13.plainText() in captured.out
 
 
-class TestCreateHTMLDocument():
+def remove_file(filename):
+        if os.path.exists(filename):
+            os.remove(filename)
+            
+
+class TestCreateHTMLDocumentAllDuties:
     html_list_name = "list_of_duties.html"
     
-    def remove_file(self):
-        if os.path.exists(self.html_list_name):
-            os.remove(self.html_list_name)
-            assert not os.path.exists(self.html_list_name)
+    
     
     def test_html_doc_is_created(self):
         create_html_document(all_duties)
         assert os.path.exists(self.html_list_name)
-        self.remove_file()
+        remove_file(self.html_list_name)
 
     
     def test_html_doc_includes_title(self):
@@ -33,7 +35,7 @@ class TestCreateHTMLDocument():
         title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
         with open(self.html_list_name) as html_file:
             assert title_section in html_file.read()
-        self.remove_file()
+        remove_file(self.html_list_name)
     
     def test_html_doc_includes_duties_as_list_element(self):
                
@@ -43,7 +45,7 @@ class TestCreateHTMLDocument():
             assert duty_2.htmlListElement() in file_contents
             assert duty_3.htmlListElement() in file_contents
             assert duty_3.htmlListElement() in file_contents
-        self.remove_file()
+        remove_file(self.html_list_name)
 
     def test_ul_tags_in_file_contents(self):
         create_html_document(all_duties)
@@ -51,7 +53,7 @@ class TestCreateHTMLDocument():
             file_contents = html_file.read()
             assert "<ul>" in file_contents
             assert "</ul>" in file_contents
-        self.remove_file()
+        remove_file(self.html_list_name)
     
     def test_html_file_contains_two_ul_tags(self):
         create_html_document(all_duties)
@@ -59,7 +61,7 @@ class TestCreateHTMLDocument():
             file_contents = html_file.read()
             assert file_contents.count("<ul>") == 1
             assert file_contents.count("</ul>") == 1
-        self.remove_file()
+        remove_file(self.html_list_name)
     
     def _test_html_file_contains_26_li_tags(self):
         create_html_document(all_duties)
@@ -67,12 +69,12 @@ class TestCreateHTMLDocument():
             file_contents = html_file.read()
             assert file_contents.count("<li>") == 13
             assert file_contents.count("</li>") == 13
-        self.remove_file()
+        remove_file(self.html_list_name)
     
 
-        
     def test_remove_file_if_still_exists(self):
-        self.remove_file()
+        remove_file(self.html_list_name)
+        assert not os.path.exists(self.html_list_name)
         
     
 
