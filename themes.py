@@ -1,4 +1,4 @@
-from duties import *
+from duties_and_names import *
 import webbrowser
 import os
 
@@ -7,8 +7,8 @@ def print_duties_to_terminal(duties):
     for duty in duties:
         print(duty.plainText())
     
-def create_html_document(duties):
-    with open("list_of_duties.html", "x") as html_file:
+def create_html_document(filename, duties):
+    with open(filename, "x") as html_file:
         if len(duties) <= 1:
             html_file.write("<h1>Devops Engineer: Occupation Duties</h1>")
             html_file.write("<ul>")
@@ -36,6 +36,6 @@ if __name__=="__main__":
         print_duties_to_terminal(all_duties)
     
     if user_choice == '2':
-        create_html_document(all_duties)
-        file_path = "file://" + os.path.realpath("list_of_duties.html")
+        create_html_document(html_file_name, all_duties)
+        file_path = "file://" + os.path.realpath(html_file_name)
         webbrowser.open(file_path)
