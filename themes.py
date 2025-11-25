@@ -9,11 +9,18 @@ def print_duties_to_terminal(duties):
     
 def create_html_document(duties):
     with open("list_of_duties.html", "x") as html_file:
-        html_file.write("<h1>Devops Engineer: Occupation Duties</h1>")
-        html_file.write("<ul>")
-        for duty in duties:
-            html_file.write(duty.htmlListElement())
-        html_file.write("</ul>")
+        if len(duties) <= 1:
+            html_file.write("<h1>Devops Engineer: Occupation Duties</h1>")
+            html_file.write("<ul>")
+            html_file.write(duty_4.htmlListElement())
+            html_file.write("</ul>")
+            
+        else:
+            html_file.write("<h1>Devops Engineer: Occupation Duties</h1>")
+            html_file.write("<ul>")
+            for duty in duties:
+                html_file.write(duty.htmlListElement())
+            html_file.write("</ul>")
 
     
 
