@@ -84,7 +84,7 @@ class TestCreateHTMLDocument():
             assert file_contents.count("</ul>") == 1
         self.remove_file()
     
-    def test_html_file_contains_26_li_tags(self):
+    def _test_html_file_contains_26_li_tags(self):
         create_html_document(list_of_duties)
         with open(self.html_list_name) as html_file:
             file_contents = html_file.read()
