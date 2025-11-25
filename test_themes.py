@@ -1,6 +1,6 @@
 from themes import print_duties_to_terminal
 from themes import create_html_document
-from duties_and_names import *
+from duties_and_themes_data import *
 
 import os
 
@@ -22,7 +22,29 @@ class TestPrintFunction:
         assert duty_11.plainText() in captured.out   
         assert duty_3.plainText() not in captured.out
         assert duty_8.plainText() not in captured.out
-        assert duty_13.plainText() not in captured.out     
+        assert duty_13.plainText() not in captured.out
+    
+    def test_check_print_output_bootcamp_duties(self, capsys):
+        print_duties_to_terminal(bootcamp_duties)
+        captured = capsys.readouterr()
+
+        assert duty_1.plainText() in captured.out
+        assert duty_3.plainText() in captured.out
+        assert duty_13.plainText() in captured.out
+        assert duty_8.plainText() not in captured.out
+        assert duty_10.plainText() not in captured.out
+    
+    def test_check_print_output_security_duties(self, capsys):
+        print_duties_to_terminal(security_duties)
+        captured = capsys.readouterr()
+
+        assert duty_9.plainText() in captured.out
+        assert duty_3.plainText() not in captured.out
+        assert duty_13.plainText() not in captured.out
+        assert duty_8.plainText() not in captured.out
+        assert duty_1.plainText() not in captured.out
+    
+        
         
 
 title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
@@ -120,6 +142,40 @@ class TestCreateHTMLDocumentSpecifiedDuties:
             assert duty_2.htmlListElement() not in file_contents
             assert duty_8.htmlListElement() not in file_contents
             assert duty_13.htmlListElement() not in file_contents    
+        remove_file(html_file_name)
+        
+    def test_create_html_doc_with_bootcamp_duties(self):
+        create_html_document(html_file_name, bootcamp_duties)
+        assert os.path.exists(html_file_name)
+        with open(html_file_name) as html_file:
+            file_contents = html_file.read()
+            assert title_section in file_contents
+            assert file_contents.count("<ul>") == 1
+            assert file_contents.count("</ul>") == 1
+            assert file_contents.count("<li>") == 5
+            assert file_contents.count("</li>") == 5
+            assert duty_1.htmlListElement() in file_contents
+            assert duty_3.htmlListElement() in file_contents
+            assert duty_13.htmlListElement() in file_contents
+            assert duty_5.htmlListElement() not in file_contents
+            assert duty_7.htmlListElement() not in file_contents
+            assert duty_10.htmlListElement() not in file_contents    
+        remove_file(html_file_name)
+        
+    def test_create_html_doc_with_assemble_duties(self):
+        create_html_document(html_file_name, assemble_duties)
+        assert os.path.exists(html_file_name)
+        with open(html_file_name) as html_file:
+            file_contents = html_file.read()
+            assert title_section in file_contents
+            assert file_contents.count("<ul>") == 1
+            assert file_contents.count("</ul>") == 1
+            assert file_contents.count("<li>") == 1
+            assert file_contents.count("</li>") == 1
+            assert duty_8.htmlListElement() in file_contents
+            assert duty_1.htmlListElement() not in file_contents
+            assert duty_7.htmlListElement() not in file_contents
+            assert duty_9.htmlListElement() not in file_contents    
         remove_file(html_file_name)
     
     def test_remove_file_if_still_exists(self):

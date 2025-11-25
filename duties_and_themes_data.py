@@ -15,5 +15,11 @@ duty_12 = Duty(12, "Look to automate any manual tasks that are repeated, often u
 duty_13 = Duty(13, "Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience")
 
 all_duties = [duty_1, duty_2, duty_3, duty_4, duty_5, duty_6, duty_7, duty_8, duty_9, duty_10, duty_11, duty_12, duty_13]
+bootcamp_duties = [duty_1, duty_2, duty_3, duty_4, duty_13]
+automate_duties = [duty_5, duty_7, duty_10]
+houston_duties = [duty_6, duty_7, duty_10, duty_12]
+deeper_duties = [duty_11]
+assemble_duties = [duty_8]
+security_duties = [duty_9]
 
 html_file_name = "list_of_duties.html"

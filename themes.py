@@ -1,4 +1,4 @@
-from duties_and_names import *
+from duties_and_themes_data import *
 import webbrowser
 import os
 
