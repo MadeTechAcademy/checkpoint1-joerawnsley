@@ -24,19 +24,22 @@ def create_html_document(list_of_duties):
     title = "<h1>Devops Engineer: Occupation Duties</h1>"
     duty_2 = "<ul><li>Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members.</li></ul>"
     duty_3 = f"<li>{list_of_duties[2]}</li>"
+    duty_13 = f"<li>{list_of_duties[12]}</li>"
     html_list_of_duties.writelines(title)
     html_list_of_duties.writelines(duty_2)
     html_list_of_duties.writelines(duty_3)
+    html_list_of_duties.writelines(duty_13)
     
     html_list_of_duties.close()
     
 
 if __name__=="__main__":
-    user_choice = input("""
-    Welcome to apprentice themes!\n
-    Press (1) to list all the duties\n
-    Enter your choice:
-    """)
-    if user_choice == '1':
-        # print_duties_to_terminal()
-        create_html_document(list_of_duties)
+    # user_choice = input("""
+    # Welcome to apprentice themes!\n
+    # Press (1) to list all the duties\n
+    # Enter your choice:
+    # """)
+    # # if user_choice == '1
+    # #     print_duties_to_terminal()
+        
+    create_html_document(list_of_duties)

@@ -13,6 +13,7 @@ duty_7 = "Duty 2 Initiate and facilitate knowledge sharing and technical collabo
 duty_8 = "Duty 8 Evolve and define architecture, utilising the knowledge and experience of the team to design in an optimal user experience, scalability, security, high availability and optimal performance."
 duty_13 = "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
         
+
 class TestListOfDuties():
     def test_length(self):
         assert len(list_of_duties) == 13
@@ -42,38 +43,54 @@ class TestCreateHTMLDocument():
             assert not os.path.exists(self.html_list_name)
     
     def test_html_doc_is_created(self):
-        
         create_html_document(list_of_duties)
         assert os.path.exists(self.html_list_name)
-        
         self.remove_file()
 
     
     def test_html_doc_includes_title(self):
-        
         create_html_document(list_of_duties)
         title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
-        html_file = open(self.html_list_name)
-        assert title_section in html_file.read()
-        html_file.close()
-        
+        with open(self.html_list_name) as html_file:
+            assert title_section in html_file.read()
         self.remove_file()
     
     def test_html_doc_includes_duties_as_list_element(self):
+        
         def list_element(duty):
             return f"<li>{duty}</li>" 
         
         create_html_document(list_of_duties) 
-        html_file = open(self.html_list_name)
-        file_contents = html_file.read()
-        
-        assert list_element(duty_2) in file_contents
-        assert list_element(duty_3) in file_contents
-        
-        html_file.close()
+        with open(self.html_list_name) as html_file:
+            file_contents = html_file.read()
+            assert list_element(duty_2) in file_contents
+            assert list_element(duty_3) in file_contents
+            assert list_element(duty_13) in file_contents
+        self.remove_file()
 
     def test_ul_tags_in_file_contents(self):
-        pass
+        create_html_document(list_of_duties)
+        with open(self.html_list_name) as html_file:
+            file_contents = html_file.read()
+            assert "<ul>" in file_contents
+            assert "</ul>" in file_contents
+        self.remove_file()
+    
+    def test_html_file_contains_two_ul_tags(self):
+        create_html_document(list_of_duties)
+        with open(self.html_list_name) as html_file:
+            file_contents = html_file.read()
+            assert file_contents.count("<ul>") == 1
+            assert file_contents.count("</ul>") == 1
+        self.remove_file()
+    
+    def test_html_file_contains_26_li_tags(self):
+        create_html_document(list_of_duties)
+        with open(self.html_list_name) as html_file:
+            file_contents = html_file.read()
+            assert file_contents.count("<li>") == 13
+            assert file_contents.count("</li>") == 13
+        self.remove_file()
     
 
         
