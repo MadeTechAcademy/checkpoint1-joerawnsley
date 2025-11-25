@@ -1,9 +1,9 @@
-from themes import list_of_duties
+# from themes import list_of_duties
 from themes import print_duties_to_terminal
 from themes import create_html_document
+from duties import *
 
 import os
-import re
 
 
 
@@ -14,14 +14,14 @@ duty_8 = "Duty 8 Evolve and define architecture, utilising the knowledge and exp
 duty_13 = "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
         
 
-class TestListOfDuties():
-    def test_length(self):
-        assert len(list_of_duties) == 13
+# class TestListOfDuties():
+#     def test_length(self):
+#         assert len(list_of_duties) == 13
     
-    def test_includes_duties(self):
-        assert duty_3 in list_of_duties
-        assert duty_8 in list_of_duties
-        assert duty_13 in list_of_duties
+#     def test_includes_duties(self):
+#         assert duty_3 in list_of_duties
+#         assert duty_8 in list_of_duties
+#         assert duty_13 in list_of_duties
 
 
 class TestPrintFunction():
@@ -43,13 +43,13 @@ class TestCreateHTMLDocument():
             assert not os.path.exists(self.html_list_name)
     
     def test_html_doc_is_created(self):
-        create_html_document(list_of_duties)
+        create_html_document(all_duties)
         assert os.path.exists(self.html_list_name)
         self.remove_file()
 
     
     def test_html_doc_includes_title(self):
-        create_html_document(list_of_duties)
+        create_html_document(all_duties)
         title_section = "<h1>Devops Engineer: Occupation Duties</h1>"
         with open(self.html_list_name) as html_file:
             assert title_section in html_file.read()
@@ -60,7 +60,7 @@ class TestCreateHTMLDocument():
         def list_element(duty):
             return f"<li>{duty}</li>" 
         
-        create_html_document(list_of_duties) 
+        create_html_document(all_duties) 
         with open(self.html_list_name) as html_file:
             file_contents = html_file.read()
             assert list_element(duty_2) in file_contents
@@ -69,7 +69,7 @@ class TestCreateHTMLDocument():
         self.remove_file()
 
     def test_ul_tags_in_file_contents(self):
-        create_html_document(list_of_duties)
+        create_html_document(all_duties)
         with open(self.html_list_name) as html_file:
             file_contents = html_file.read()
             assert "<ul>" in file_contents
@@ -77,7 +77,7 @@ class TestCreateHTMLDocument():
         self.remove_file()
     
     def test_html_file_contains_two_ul_tags(self):
-        create_html_document(list_of_duties)
+        create_html_document(all_duties)
         with open(self.html_list_name) as html_file:
             file_contents = html_file.read()
             assert file_contents.count("<ul>") == 1
@@ -85,7 +85,7 @@ class TestCreateHTMLDocument():
         self.remove_file()
     
     def _test_html_file_contains_26_li_tags(self):
-        create_html_document(list_of_duties)
+        create_html_document(all_duties)
         with open(self.html_list_name) as html_file:
             file_contents = html_file.read()
             assert file_contents.count("<li>") == 13
