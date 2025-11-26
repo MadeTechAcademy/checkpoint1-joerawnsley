@@ -42,13 +42,13 @@ def choose_theme():
     Enter your choice: """)
     
     match user_choice_of_theme:
-        case "1": choose_output(all_duties)
-        case "2": choose_output(bootcamp_duties)
-        case "3": choose_output(automate_duties)
-        case "4": choose_output(houston_duties)
-        case "5": choose_output(deeper_duties)
-        case "6": choose_output(assemble_duties)
-        case "7": choose_output(security_duties)
+        case "1": choose_output(full_apprenticeship)
+        case "2": choose_output(bootcamp)
+        case "3": choose_output(automate)
+        case "4": choose_output(houston)
+        case "5": choose_output(deeper)
+        case "6": choose_output(assemble)
+        case "7": choose_output(security)
 
 
 if __name__=="__main__":
