@@ -6,7 +6,7 @@ import os
 
 class TestPrintFunction:
     def test_check_print_output(self, capsys):
-        print_duties_to_terminal(all_duties)
+        print_duties_to_terminal(full_apprenticeship)
         captured = capsys.readouterr()
 
         assert duty_3.plainText() in captured.out
@@ -14,18 +14,18 @@ class TestPrintFunction:
         assert duty_13.plainText() in captured.out
     
     def test_check_print_output_specified_duties_only(self, capsys):
-        print_duties_to_terminal([duty_6, duty_9, duty_11])
+        print_duties_to_terminal(automate)
         captured = capsys.readouterr()
         
-        assert duty_6.plainText() in captured.out
-        assert duty_9.plainText() in captured.out
-        assert duty_11.plainText() in captured.out   
-        assert duty_3.plainText() not in captured.out
+        assert duty_5.plainText() in captured.out
+        assert duty_7.plainText() in captured.out
+        assert duty_10.plainText() in captured.out   
+        assert duty_1.plainText() not in captured.out
         assert duty_8.plainText() not in captured.out
         assert duty_13.plainText() not in captured.out
     
     def test_check_print_output_bootcamp_duties(self, capsys):
-        print_duties_to_terminal(bootcamp_duties)
+        print_duties_to_terminal(bootcamp)
         captured = capsys.readouterr()
 
         assert duty_1.plainText() in captured.out
@@ -35,7 +35,7 @@ class TestPrintFunction:
         assert duty_10.plainText() not in captured.out
     
     def test_check_print_output_security_duties(self, capsys):
-        print_duties_to_terminal(security_duties)
+        print_duties_to_terminal(security)
         captured = capsys.readouterr()
 
         assert duty_9.plainText() in captured.out
