@@ -3,9 +3,8 @@ import webbrowser
 import os
 
 
-def print_duties_to_terminal(duties):
-    for duty in duties:
-        print(duty.plainText())
+def print_duties_to_terminal(theme):
+    print(theme.plainText())
     
 def create_html_document(filename, duties):
     with open(filename, "x") as html_file:
