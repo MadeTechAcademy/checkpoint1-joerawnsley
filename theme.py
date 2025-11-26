@@ -7,11 +7,13 @@ class Theme:
         self.duties = duties
         
     def plainText(self):
-        return ("Theme: Automate!"
-        "Duties:"
-        f"Duty 5: {duty_5.plainText()}."
-        f"Duty 7: {duty_7.plainText()}."
-        f"Duty 10: {duty_10.plainText()}."
+        text = ("Theme: Automate!\n\n"
+        "Duties:\n\n"
+        f"{duty_5.plainText()}\n"
+        f"{duty_7.plainText()}\n"
+        f"{duty_10.plainText()}"
          )
+        print(text)
+        return text
         
 
