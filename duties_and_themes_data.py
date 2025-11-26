@@ -15,14 +15,6 @@ duty_11 = Duty(11, "Keep up with cutting edge by committing to continual trainin
 duty_12 = Duty(12, "Look to automate any manual tasks that are repeated, often using APIs")
 duty_13 = Duty(13, "Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience")
 
-all_duties = [duty_1, duty_2, duty_3, duty_4, duty_5, duty_6, duty_7, duty_8, duty_9, duty_10, duty_11, duty_12, duty_13]
-bootcamp_duties = [duty_1, duty_2, duty_3, duty_4, duty_13]
-automate_duties = [duty_5, duty_7, duty_10]
-houston_duties = [duty_6, duty_7, duty_10, duty_12]
-deeper_duties = [duty_11]
-assemble_duties = [duty_8]
-security_duties = [duty_9]
-
 full_apprenticeship = Theme("All Duties", [duty_1, duty_2, duty_3, duty_4, duty_5, duty_6, duty_7, duty_8, duty_9, duty_10, duty_11, duty_12, duty_13])
 bootcamp = Theme("Bootcamp", [duty_1, duty_2, duty_3, duty_4, duty_13])
 automate = Theme("Automate!", [duty_5, duty_7, duty_10])

@@ -17,4 +17,6 @@ class Theme:
             html_string += duty.htmlListElement()
         html_string += "</ul>"
         return html_string
-
+    
+    def confirm_choice(self):
+        print(f"\nYou have chosen {self.title}")
