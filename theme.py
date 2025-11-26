@@ -1,4 +1,3 @@
-from duty import Duty
 from duties_and_themes_data import *
 
 class Theme:
@@ -10,10 +9,12 @@ class Theme:
         theme_text = f"Theme: {self.title}\n\nDuties:\n"
         for duty in self.duties:
             theme_text += f"\n{duty.plainText()}"
-        
-        print(theme_text)
         return theme_text
 
     def htmlString(self):
-        return ""
+        html_string = f"<h2>Theme: {self.title}</h2><ul>"
+        for duty in self.duties:
+            html_string += duty.htmlListElement()
+        html_string += "</ul>"
+        return html_string
 
