@@ -1,5 +1,4 @@
 from theme import Theme
-from duty import Duty
 from duties_and_themes_data import *
 
 def test_theme_plaintext_lists_duties_with_title():
