@@ -57,20 +57,20 @@ def remove_file(filename):
 class TestCreateHTMLDocumentAllDuties:
     
     def test_html_doc_is_created(self):
-        create_html_document(html_file_name, all_duties)
+        create_html_document(html_file_name, full_apprenticeship)
         assert os.path.exists(html_file_name)
         remove_file(html_file_name)
 
     
     def test_html_doc_includes_title(self):
-        create_html_document(html_file_name, all_duties)
+        create_html_document(html_file_name, full_apprenticeship)
         with open(html_file_name) as html_file:
             assert title_section in html_file.read()
         remove_file(html_file_name)
     
     def test_html_doc_includes_duties_as_list_element(self):
                
-        create_html_document(html_file_name, all_duties) 
+        create_html_document(html_file_name, full_apprenticeship) 
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
             assert duty_2.htmlListElement() in file_contents
@@ -79,7 +79,7 @@ class TestCreateHTMLDocumentAllDuties:
         remove_file(html_file_name)
 
     def test_ul_tags_in_file_contents(self):
-        create_html_document(html_file_name, all_duties)
+        create_html_document(html_file_name, full_apprenticeship)
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
             assert "<ul>" in file_contents
@@ -87,7 +87,7 @@ class TestCreateHTMLDocumentAllDuties:
         remove_file(html_file_name)
     
     def test_html_file_contains_two_ul_tags(self):
-        create_html_document(html_file_name, all_duties)
+        create_html_document(html_file_name, full_apprenticeship)
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
             assert file_contents.count("<ul>") == 1
@@ -95,7 +95,7 @@ class TestCreateHTMLDocumentAllDuties:
         remove_file(html_file_name)
     
     def _test_html_file_contains_26_li_tags(self):
-        create_html_document(html_file_name, all_duties)
+        create_html_document(html_file_name, full_apprenticeship)
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
             assert file_contents.count("<li>") == 13
@@ -111,7 +111,7 @@ class TestCreateHTMLDocumentAllDuties:
 class TestCreateHTMLDocumentSpecifiedDuties:
     
     def test_create_html_doc_with_single_duty(self):
-        create_html_document(html_file_name, [duty_4])
+        create_html_document(html_file_name, deeper)
         assert os.path.exists(html_file_name)
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
@@ -120,13 +120,13 @@ class TestCreateHTMLDocumentSpecifiedDuties:
             assert file_contents.count("</ul>") == 1
             assert file_contents.count("<li>") == 1
             assert file_contents.count("</li>") == 1
-            assert duty_4.htmlListElement() in file_contents
+            assert duty_11.htmlListElement() in file_contents
             assert duty_1.htmlListElement() not in file_contents
             assert duty_5.htmlListElement() not in file_contents
         remove_file(html_file_name)
     
-    def test_create_html_doc_with_multiple_duties(self):
-        create_html_document(html_file_name, [duty_1, duty_3, duty_4, duty_12])
+    def test_create_html_doc_with_houston_duties(self):
+        create_html_document(html_file_name, houston)
         assert os.path.exists(html_file_name)
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
@@ -135,9 +135,9 @@ class TestCreateHTMLDocumentSpecifiedDuties:
             assert file_contents.count("</ul>") == 1
             assert file_contents.count("<li>") == 4
             assert file_contents.count("</li>") == 4
-            assert duty_1.htmlListElement() in file_contents
-            assert duty_3.htmlListElement() in file_contents
-            assert duty_4.htmlListElement() in file_contents
+            assert duty_6.htmlListElement() in file_contents
+            assert duty_7.htmlListElement() in file_contents
+            assert duty_10.htmlListElement() in file_contents
             assert duty_12.htmlListElement() in file_contents
             assert duty_2.htmlListElement() not in file_contents
             assert duty_8.htmlListElement() not in file_contents
@@ -145,7 +145,7 @@ class TestCreateHTMLDocumentSpecifiedDuties:
         remove_file(html_file_name)
         
     def test_create_html_doc_with_bootcamp_duties(self):
-        create_html_document(html_file_name, bootcamp_duties)
+        create_html_document(html_file_name, bootcamp)
         assert os.path.exists(html_file_name)
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
@@ -163,7 +163,7 @@ class TestCreateHTMLDocumentSpecifiedDuties:
         remove_file(html_file_name)
         
     def test_create_html_doc_with_assemble_duties(self):
-        create_html_document(html_file_name, assemble_duties)
+        create_html_document(html_file_name, assemble)
         assert os.path.exists(html_file_name)
         with open(html_file_name) as html_file:
             file_contents = html_file.read()
