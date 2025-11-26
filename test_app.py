@@ -1,5 +1,5 @@
-from themes import print_duties_to_terminal
-from themes import create_html_document
+from app import print_duties_to_terminal
+from app import create_html_document
 from duties_and_themes_data import *
 
 import os
