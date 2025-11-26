@@ -14,3 +14,6 @@ class Theme:
         print(theme_text)
         return theme_text
 
+    def htmlString(self):
+        return ""
+
