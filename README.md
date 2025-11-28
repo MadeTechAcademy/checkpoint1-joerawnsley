@@ -1,3 +1,27 @@
+# Apprenticeship Themes App
+## by Joe Rawnsley
+
+The Apprenticeship Themes app runs from the terminal. Assuming you have installed Python3, run:
+
+```Python3 app.py```
+
+to run the program. You can run the tests with:
+
+```pytest -v```
+
+I wanted to focus on making the code clean and maintainble rather than adding new features, but there is lots more I could have done to improve it. This is my to-do list:
+
+- Create more classes for html elements e.g. a title class, a heading class, a list class?
+- Learn about into ATDD and/or mock testing to make the tests more comprehensive
+- Build a link class for html page. Build in links to display other themes on each page
+- Make a home page that links to duties and themes, that the user can click to run without using the terminal
+- Add a style sheet to improve the appearance of HTML pages
+- Add functionality to create new themes from the command line. They could be written as new lines in data/themes
+- in test_app.py: extra tests check if the theme heading is present
+- Move onto task 4 - display results in a better way in the terminal or with a different Python library
+
+
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/BqipVvSh)
 We're halfway through the bootcamp phase of the apprenticeship, and a couple of questions that have come has come around the other parts of the apprenticeship and how they fit together. I thought the best way to do this was in code, but I've not been the best developer....
 

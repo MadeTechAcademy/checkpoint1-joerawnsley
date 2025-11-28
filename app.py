@@ -5,6 +5,9 @@ import webbrowser
 import os
 
 
+######### Please see README.md for notes ###############
+
+
 def choose_theme():
     user_choice_of_theme = input("""
     Please select a theme to see the duties for that theme.\n
