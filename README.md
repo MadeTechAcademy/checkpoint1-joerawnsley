@@ -3,7 +3,7 @@
 
 The Apprenticeship Themes app runs from the terminal. Assuming you have installed Python3, run:
 
-```Python3 app.py```
+```python3 app.py```
 
 to run the program. You can run the tests with:
 
@@ -19,6 +19,14 @@ I wanted to focus on making the code clean and maintainble rather than adding ne
 - Add functionality to create new themes from the command line. They could be written as new lines in data/themes
 - in test_app.py: extra tests check if the theme heading is present
 - Move onto task 4 - display results in a better way in the terminal or with a different Python library
+
+
+
+
+
+
+
+
 
 
 
