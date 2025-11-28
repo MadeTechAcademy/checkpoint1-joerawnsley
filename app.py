@@ -1,4 +1,6 @@
-from duties_and_themes_data import *
+from data.themes import *
+from data.duties import *
+from data.filenames import html_file_name
 import webbrowser
 import os
 
@@ -17,15 +19,15 @@ def choose_theme():
     Enter your choice: """)
     
     match user_choice_of_theme:
-        case "1": choose_output(full_apprenticeship)
-        case "2": choose_output(bootcamp)
-        case "3": choose_output(automate)
-        case "4": choose_output(houston)
-        case "5": choose_output(deeper)
-        case "6": choose_output(assemble)
-        case "7": choose_output(security)
+        case "1": display_duties(full_apprenticeship)
+        case "2": display_duties(bootcamp)
+        case "3": display_duties(automate)
+        case "4": display_duties(houston)
+        case "5": display_duties(deeper)
+        case "6": display_duties(assemble)
+        case "7": display_duties(security)
 
-def choose_output(theme):
+def display_duties(theme):
     theme.confirm_choice()
     user_choice_of_output = input(f"""Press (1) to list the duties in the terminal, or press (2) to see them in the browser.\n
     Enter your choice: """)

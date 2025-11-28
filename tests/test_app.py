@@ -1,6 +1,7 @@
 from app import print_duties_to_terminal
 from app import create_html_document
-from duties_and_themes_data import *
+from data.themes import *
+from data.filenames import html_file_name
 
 import os
 

@@ -1,5 +1,5 @@
-from theme import Theme
-from duties_and_themes_data import *
+from classes.theme import Theme
+from data.duties import *
 
 def test_automate_theme_plaintext_lists_duties_with_title():
     automate_theme = Theme("Automate!", [duty_5, duty_7, duty_10])

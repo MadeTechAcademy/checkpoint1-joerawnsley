@@ -1,5 +1,3 @@
-from duties_and_themes_data import *
-
 class Theme:
     def __init__(self, title, duties):
         self.title = title

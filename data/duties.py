@@ -1,5 +1,4 @@
-from duty import Duty
-from theme import Theme
+from classes.duty import Duty
 
 duty_1 = Duty(1, "Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage")
 duty_2 = Duty(2, "Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members")
@@ -14,13 +13,3 @@ duty_10 = Duty(10, "Implement a good coverage of monitoring (metrics, logs), ens
 duty_11 = Duty(11, "Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications")
 duty_12 = Duty(12, "Look to automate any manual tasks that are repeated, often using APIs")
 duty_13 = Duty(13, "Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience")
-
-full_apprenticeship = Theme("All Duties", [duty_1, duty_2, duty_3, duty_4, duty_5, duty_6, duty_7, duty_8, duty_9, duty_10, duty_11, duty_12, duty_13])
-bootcamp = Theme("Bootcamp", [duty_1, duty_2, duty_3, duty_4, duty_13])
-automate = Theme("Automate!", [duty_5, duty_7, duty_10])
-houston = Theme("Houston, Prepare to Launch", [duty_6, duty_7, duty_10, duty_12])
-deeper = Theme("Going Deeper", [duty_11])
-assemble = Theme("Assemble!", [duty_8])
-security = Theme("Call Security", [duty_9])
-
-html_file_name = "list_of_duties.html"
