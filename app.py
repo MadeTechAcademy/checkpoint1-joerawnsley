@@ -48,7 +48,8 @@ def print_duties_to_terminal(theme):
 
     
 def create_html_document(filename, theme):
-    with open(filename, "x") as html_file:
+    # "w" option overwrites any existing file. Change to "x" to ensure a file is only created if it doesn't exist
+    with open(filename, "w") as html_file:
         html_file.write("<h1>Devops Engineer: Occupation Duties</h1>")
         html_file.write(theme.htmlString())
         
